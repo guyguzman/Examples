@@ -45,7 +45,7 @@
 
 <body>
 
-    <div class="container">
+    <div class="container" onclick="showWidthHeight()">
         <div id="Info"></div>
     </div>
 
@@ -60,39 +60,35 @@
             let pageBreak = "</br>";
 
             let elementInfo = document.getElementById("Info");
-            console.log(windowInnerWidth, windowInnerHeight, elementClientWidth, elementClientHeight, elementOffsetWidth, elementOffsetHeight);
+
 
             {
-                let vh = window.innerHeight * 0.01;
-                document.documentElement.style.setProperty("--vh", `${vh}px`);
-                console.log("windowInnerWidth    " + windowInnerWidth);
-                console.log("elementClientWidth  " + elementClientWidth);
-                console.log("elementOffsetWidth  " + elementOffsetWidth);
-                console.log("windowInnerHeight   " + windowInnerHeight);
-                console.log("elementClientHeight " + elementClientHeight);
-                console.log("elementOffsetHeight " + elementOffsetHeight);
-                let message = "windowInnerWidth....." + windowInnerWidth + pageBreak + "elementClientWidth..." + elementClientWidth + pageBreak + "elementOffsetWidth..." + elementOffsetWidth + pageBreak;
-                message += pageBreak + "windowInnerWidth....." + windowInnerHeight + pageBreak + "elementClientHeight.." + elementClientHeight + pageBreak + "elementOffsetHeight.." + elementOffsetHeight + pageBreak;
-                elementInfo.innerHTML = message;
-
-                console.log(vh);
+                showWidthHeight();
             }
 
             window.addEventListener("resize", () => {
-                let vh = window.innerHeight * 0.01;
-                document.documentElement.style.setProperty("--vh", `${vh}px`);
-                console.log("windowInnerWidth  " + windowInnerWidth);
-                console.log("elementClientWidth " + elementClientWidth);
-                console.log("elementOffsetWidth " + elementOffsetWidth);
-                console.log("windowInnerHeight  " + windowInnerHeight);
-                console.log("elementClientHeight " + elementClientHeight);
-                console.log("elementOffsetHeight " + elementOffsetHeight);
-                let message = "windowInnerWidth....." + windowInnerWidth + pageBreak + "elementClientWidth..." + elementClientWidth + pageBreak + "elementOffsetWidth..." + elementOffsetWidth + pageBreak;
-                message += pageBreak + "windowInnerWidth....." + windowInnerHeight + pageBreak + "elementClientHeight.." + elementClientHeight + pageBreak + "elementOffsetHeight.." + elementOffsetHeight + pageBreak;
-                elementInfo.innerHTML = message;
-                console.log(vh);
+                showWidthHeight();
             });
         };
+
+        function showWidthHeight() {
+            let windowInnerWidth = window.innerWidth;
+            let windowInnerHeight = window.innerHeight;
+            let elementClientWidth = document.documentElement.clientWidth;
+            let elementClientHeight = document.documentElement.clientHeight;
+            let elementOffsetWidth = document.documentElement.offsetWidth;
+            let elementOffsetHeight = document.documentElement.offsetHeight;
+            let pageBreak = "</br>";
+            let elementInfo = document.getElementById("Info");
+
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty("--vh", `${vh}px`);
+            let message = "windowInnerWidth....." + windowInnerWidth + pageBreak + "elementClientWidth..." + elementClientWidth + pageBreak + "elementOffsetWidth..." + elementOffsetWidth + pageBreak;
+            message += pageBreak + "windowInnerHeight...." + windowInnerHeight + pageBreak + "elementClientHeight.." + elementClientHeight + pageBreak + "elementOffsetHeight.." + elementOffsetHeight + pageBreak;
+            elementInfo.innerHTML = message;
+            console.log(vh);
+
+        }
     </script>
 </body>
 
